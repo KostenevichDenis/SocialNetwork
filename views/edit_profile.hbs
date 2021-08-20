@@ -1,0 +1,23 @@
+<div class="container rounded__containter mt-3">    
+        <div class="row settings__head mx-auto">
+            <div class="col-6 settings__title">Settings</div>
+            <div class="col-6 settings__btn-close" onclick="window.location.replace('/')"></div>
+        </div>
+        <hr>
+        <form class="row settings__main h-auto" action="" method="post" name="user">
+            <img src="{{currentUser.user_avatar}}" id="img_avatar" class="col-12 avatar">
+            <div class="row d-flex justify-content-start">
+                <input class="col-3 form-control mb-3" id="avatar_file" type="file" accept="image/*" value="Browse..">
+                <input class="col-3 settings__btn-change-photo" type="button" onclick="user_upload_photo(document.forms.user)" value="Change photo">
+            </div>
+            <label class="col-12 setting__edit-parameter-name" for="user_location">Edit location</label>
+            <textarea class="col-12 setting__states__input-text h-25" name="user_location" id="user_location" cols="30" rows="1">{{currentUser.user_location}}</textarea>
+            <label class="col-12 setting__edit-parameter-name" for="user_status">Edit status</label>
+            <textarea class="col-12 setting__states__input-text" name="user_status" id="user_status" cols="30" rows="2">{{currentUser.user_status}}</textarea>
+            <div class="row settings__footer">
+                <input class="col-6 settings__btn-gray" type="button" value="Cancel">
+                <input class="col-6 settings__btn-red" type="button" value="Save" avatar="{{currentUser.user_avatar}}" id="{{currentUser._id}}" onclick="user_edit_request(event.target.id, document.forms.user)">
+            </div>
+            <input type="hidden" name="_csrf" value="{{csrf}}">
+    </form>
+    </div>

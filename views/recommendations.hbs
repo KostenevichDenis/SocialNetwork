@@ -1,0 +1,18 @@
+    <main>
+        <div class="container w-75 h-auto">
+            <div class="row user-profile h-auto">
+                <img src="{{currentUser.user_avatar}}" class="col-12 avatar">
+                <div class="col-12 user-info h-auto">
+                    <div class="user-name h-auto">{{currentUser.user_name}}</div>
+                    <div class="user-location h-auto">{{currentUser.user_location}}</div>
+                    <div class="user-status text-center h-auto">{{currentUser.user_status}}</div>
+                    <div class="btn h-auto">
+                        <a class="" href="./edit_profile"><div class="btn-edit">Edit</div></a>
+                    </div>
+                </div>
+            </div>
+            {{>recommendations_quantity}}
+            {{>recommendations_table}}
+        </div>
+    </main>
+    <script src="../../js/myscript.js"></script>

@@ -1,0 +1,21 @@
+    <div class="container w-50 messenger__containter">    
+        {{>head_messenger_private}}
+        <hr>
+        <div class="row messenger__chat">
+            <div class="col-12 messages" id="messages">
+                {{#each (sortMsgByDate room.messages)}}
+                    {{>msg msg=this currentUser=../currentUser._id}}
+                {{/each}}
+            </div>
+            <hr>
+            <form class="row message__input" action="" id="msgForm" name="msg" method="post">
+                <input class="col-11 message__input__text" type="text" name="message" id="message" placeholder="Message">    
+                <div class="col-1 message__input__send" onclick="" id="sendMsg"></div>
+                <input type="hidden" id="_csrf" name="_csrf" value="{{csrf}}">
+                <input type="hidden" id="roomId" name="roomId" value="{{room._id}}">
+                <input type="hidden" id="target" name="target" value="{{targetUser._id}}">
+            </form>
+        </div>
+    </div>
+    <input type="hidden" id="_csrf" name="_csrf" value="{{csrf}}">
+    <script src="../js/ws_messenger.js"></script> 

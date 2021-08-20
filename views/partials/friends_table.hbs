@@ -1,0 +1,14 @@
+            <div class="row friends-table pt-0 h-auto ">
+                {{#each currentUserFriends}}
+                    <a class="col-xxl-4" href="../friend/{{ this.id }}">
+                        <div class="friend">
+                            <img src="{{ this.user_avatar }}" class="avatar-thumb">
+                            <div class="friend-data">
+                                <span>{{ this.user_name }}</span>
+                                <span>{{ this.user_location }}</span>
+                            </div>
+                        </div>
+                    </a>
+                {{/each}}
+
+            </div>

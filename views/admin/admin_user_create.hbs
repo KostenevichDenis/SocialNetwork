@@ -1,0 +1,59 @@
+    <div class="container admin_edit">    
+        <div class="row settings__head mx-auto">
+            <div class="col-6 settings__title">Create new user</div>
+            <div class="col-6 settings__btn-close" onclick="window.location.replace('../admin/users')"></div>
+        </div>
+        <hr>
+        <form class="row settings__main" name="user" action="" method="post">
+            <div class="row">
+
+                {{#if user}}
+                    <div class="col-3 d-flex flex-column justify-content-center align-items-center" >
+                        <img class="col-12 settings__avatar" src="{{user.user_avatar}}">
+                        <input class="col-12 settings__btn-change-photo" type="button" value="Change photo">
+                    </div>
+                    <div class="col-9">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_name">User_name</label>
+                        <input class="col-12 mb-2" type="text" name="user_name" id="user_name" value="{{user.user_name}}">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_password">User_password</label>
+                        <input class="col-12 mb-2" type="text" name="user_password" id="user_password" value="{{user.user_password}}">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_location">User_location</label>
+                        <input class="col-12 mb-2" type="text" name="user_location" id="user_location" value="{{user.user_location}}">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_status">Edit Status</label>
+                        <textarea class="col-12 setting__states__input-text" name="user_status" id="user_status" cols="30" rows="2">{{user.user_status}}</textarea>
+                        <div class="row settings__footer justify-content-end">
+                            <input class="col-6 settings__btn-red" type="button" value="Save" avatar="../img/avatar_default.jpg" id="{{user._id}}" onclick="user_create(event.target.id, document.forms.user)">
+                            <input class="col-6 settings__btn-gray" onclick="window.location.replace('../admin/users')" type="button" value="Cancel">
+                        </div>
+                        <input type="hidden" name="_csrf" value="{{csrf}}">
+                    </div>
+
+                {{else}}
+                    <div class="col-3 d-flex flex-column justify-content-center align-items-center" >
+                        <img class="col-12 settings__avatar" id="img_avatar" src="/img/avatar_default.jpg">
+                        <label for="avatar_file" class="form-label">Upload your new avatar:</label>
+                    </div>
+                    <div class="col-9">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_name">User_name</label>
+                        <input class="col-12 mb-2" type="text" name="user_name" id="user_name" value="">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_password">User_password</label>
+                        <input class="col-12 mb-2" type="text" name="user_password" id="user_password" value="">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_location">User_location</label>
+                        <input class="col-12 mb-2" type="text" name="user_location" id="user_location" value="">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_status">Edit Status</label>
+                        <textarea class="col-12 setting__states__input-text" name="user_status" id="user_status" cols="30" rows="2"></textarea>
+                    </div>
+                        
+                        <div class="row d-flex justify-content-start">
+                            <input class="col-3 form-control mb-3" id="avatar_file" type="file" accept="image/*" value="Browse..">
+                            <input class="col-3 settings__btn-change-photo" type="button" onclick="user_upload_photo(document.forms.user)" value="Change photo">
+                        </div>
+                        <div class="row settings__footer justify-content-end">
+                            <input class="col-6 settings__btn-red" type="button" value="Save" id="" onclick="user_create(document.forms.user)">
+                            <input class="col-6 settings__btn-gray " type="button" value="Cancel">
+                        </div>
+                        <input type="hidden" name="_csrf" value="{{csrf}}">
+                {{/if}}
+            </div>
+        </form>
+    </div>

@@ -1,0 +1,87 @@
+<h1>Choose an action.</h1>
+    <button id="login" type="button" title="Simulate login">
+      Simulate login
+    </button>
+    <button id="logout" type="button" title="Simulate logout">
+      Simulate logout
+    </button>
+    <button id="wsButton" type="button" title="Open WebSocket connection">
+      Open WebSocket connection
+    </button>
+    <button id="wsSendButton" type="button" title="Send WebSocket message">
+      Send WebSocket message
+    </button>
+    <pre id="messages" style="height: 400px; overflow: scroll"></pre>
+    <input type="hidden" id="_csrf" name="_csrf" value="{{csrf}}">
+    <script>
+        (function () {
+          const messages = document.querySelector('#messages');
+          const wsButton = document.querySelector('#wsButton');
+          const wsSendButton = document.querySelector('#wsSendButton');
+          const logout = document.querySelector('#logout');
+          const login = document.querySelector('#login');
+          const csrf = document.querySelector('#_csrf').value;
+
+          function showMessage(message) {
+            messages.textContent += `\n${message}`;
+            messages.scrollTop = messages.scrollHeight;
+          }
+
+          function handleResponse(response) {
+            return response.ok
+              ? response.json().then((data) => JSON.stringify(data, null, 2))
+              : Promise.reject(new Error('Unexpected response'));
+          }
+
+          login.onclick = function () {
+            console.log('csrf= ' + csrf); 
+            fetch('/login', { method: 'POST', credentials: 'same-origin', headers: {'CSRF-Token': csrf}})
+              .then(handleResponse)
+              .then(showMessage)
+              .catch(function (err) {
+                showMessage(err.message);
+              });
+          };
+
+          logout.onclick = function () {
+            fetch('/logout', { method: 'DELETE', credentials: 'same-origin', headers: {'CSRF-Token': csrf} })
+              .then(handleResponse)
+              .then(showMessage)
+              .catch(function (err) {
+                showMessage(err.message);
+              });
+          };
+
+          let ws;
+
+          wsButton.onclick = function () {
+            if (ws) {
+              ws.onerror = ws.onopen = ws.onclose = null;
+              ws.close();
+            }
+
+            ws = new WebSocket(`ws://localhost:3000/`);
+            ws.onerror = function (e) {
+              console.dir(e)
+              showMessage('WebSocket error');
+            };
+            ws.onopen = function () {
+              showMessage('WebSocket connection established');
+            };
+            ws.onclose = function () {
+              showMessage('WebSocket connection closed');
+              ws = null;
+            };
+          };
+
+          wsSendButton.onclick = function () {
+            if (!ws) {
+              showMessage('No WebSocket connection');
+              return;
+            }
+          
+            ws.send('Hello World!');
+            showMessage('Sent "Hello World!"');
+          };
+        })();
+</script>

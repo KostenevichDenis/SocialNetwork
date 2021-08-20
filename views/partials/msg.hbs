@@ -1,0 +1,14 @@
+<div class="row message" id={{msg._id}}>
+    <div class="col-11 message__author-info w-auto">
+        <img src="{{msg.authorAvatar}}" class="message__author__avatar">
+        <div class="row message__author__data">
+            <div class="col-11 message__author__name">{{msg.authorName}}</div>
+            {{#if (isAuthor msg.author currentUser)}}
+                <div class="col-1 message_btn-del" onclick="delMsg(this.parentElement.parentElement.parentElement.id)"></div>
+            {{/if}}
+            <div class="col-12 message__date">{{msg.dates}}</div>
+        </div>
+    </div>
+    
+    <div class="col-12 message__text">{{msg.body}} </div>
+</div>

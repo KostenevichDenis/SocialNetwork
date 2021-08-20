@@ -1,0 +1,19 @@
+<div class="container rounded__containter p-4">    
+    <form action="/auth/login" method="POST">
+        <div class="row settings__head mx-auto">
+            <div class="col-12 settings__title text-center">Login</div>
+        </div>
+        <div class="row">
+            <label class="col-3 setting__edit-parameter-name text-end" for="email">Email:</label>
+            <input class="col-9 input-auth" type="email m-3" name="email" id="email" required>
+            <div class="col-12 text-center" style="opacity: 0;" id="email-error">Non correct Email</div>
+            <label class="col-3 setting__edit-parameter-name text-end" for="password">Password:</label>
+            <input class="col-9 input-auth "  type="password" name="password" required>
+            <input type="hidden" class="col-12" name="_csrf" value="{{csrf}}">
+            <div class="row justify-content-center">
+                <input class="col-6 settings__btn-red m-3" type="submit" value="Login">
+                <input class="col-6 settings__btn-red m-3" onclick="window.location.replace('/auth/registration')" type="button" value="Register">
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,15 @@
+<div class="container rounded__containter p-4">    
+    <form action="/auth/login" method="POST">
+        <div class="row settings__head mx-auto">
+            <div class="col-12 settings__title text-center">Login</div>
+        </div>
+        <label class="col-3 setting__edit-parameter-name text-end" for="email">Email:</label>
+        <input class="col-9 input-auth" type="email m-3" name="email" id="email" required>
+        <div class="col-12 text-center" style="opacity: 0;" id="email-error">Non correct Email</div>
+        <label class="col-3 setting__edit-parameter-name text-end" for="password">Password:</label>
+        <input class="col-9 input-auth" type="password m-3" name="password" required>
+        <div class="col-12 text-center" id="login-error">Wrong login or password</div>
+        <input class="col-12 settings__btn-red m-3 mx-auto" type="submit" value="Login">
+        <input type="hidden" name="_csrf" value="{{csrf}}">
+    </form>
+</div>

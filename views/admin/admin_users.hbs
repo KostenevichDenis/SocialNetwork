@@ -1,0 +1,21 @@
+<div class="container admin__user-list">    
+        <input type="hidden" id="_csrf" name="_csrf" value="{{csrf}}">
+        <div class="row settings__head mx-auto mb-1">
+            <div class="col-6 settings__title">User list</div>
+            <div class="col-6 settings__btn-red w-25" onclick="window.location.replace(`../admin/users_create`)">Create new user</div>
+                <div class="row settings__title">
+                    <div class="col-1">Avatar</div>
+                    <div class="col-2">User_id</div>
+                    <div class="col-2">User_name</div>
+                    <div class="col-2">User_location</div>
+                    <div class="col-2">User_status</div>
+                    <div class="col-3"></div>
+                </div>
+            
+        </div>
+        <hr>
+        <div class="row pt-0 h-auto table_user-list">
+            {{> admin_user_list}}
+        </div>
+
+</div>

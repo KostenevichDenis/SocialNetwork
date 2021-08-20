@@ -1,0 +1,35 @@
+{
+  "name": "express-social",
+  "version": "1.0.0",
+  "description": "express version of application",
+  "main": "index.js",
+  "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
+    "aws-sdk": "^2.954.0",
+    "bcryptjs": "^2.4.3",
+    "connect-mongodb-session": "^3.0.0",
+    "crypto": "^1.0.1",
+    "csurf": "^1.11.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "express-session": "^1.17.2",
+    "hbs": "^4.1.2",
+    "mongoose": "^5.13.3",
+    "resolve-cwd": "^3.0.0",
+    "util": "^0.12.4",
+    "ws": "^8.0.0",
+    "webpack": "^5.51.0",
+    "webpack-cli": "^4.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "dev": "nodemon index -e html,css,js,json,hbs"
+  },
+  "author": "Denis Kostenevich",
+  "license": "ISC"
+}

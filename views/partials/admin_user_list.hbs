@@ -1,0 +1,17 @@
+                {{#each users}}
+                    <div class="col-12 text" id="user" href="../friend/{{ this.id }}">
+                        <div class="admin__user-list__user">
+                            <img src="{{ this.user_avatar }}" class="col-1 avatar-thumb">
+                            <div class="col-8 d-flex fliex-row align-items-center justify-content-between h-100">
+                                <div class="col-3 w-auto me-2">{{ this._id }}</div>
+                                <div class="col-3">{{ this.user_name }}</div>
+                                <div class="col-3">{{ this.user_location }}</div>
+                                <div class="col-3 mh-100 overflow-auto"> {{ this.user_status}} </div>
+                            </div>
+                            <div class="col-3 settings__footer ms-auto me-1">
+                                <div class="col-6 ms-4 me-2 settings__btn-red" id="{{ this._id }}" onclick="window.location.replace(`../admin/users_edit/${event.target.id}`)">Edit</div>
+                                <div class="col-6 settings__btn-gray" id="{{ this._id }}" onclick="confirm_delete_request(event.target.id)">Delete</div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}

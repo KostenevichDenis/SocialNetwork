@@ -1,0 +1,25 @@
+    <main>
+        <div class="container w-75 h-auto">
+            <div class="row user-profile h-auto">
+                <img src="{{userForRender.user_avatar}}" class="col-12 avatar">
+                <div class="col-12 user-info h-auto">
+                    <div class="user-name h-auto">{{userForRender.user_name}}</div>
+                    <div class="user-location h-auto">{{userForRender.user_location}}</div>
+                    <div class="user-status text-center h-auto">{{userForRender.user_status}}</div>
+                    <div class="btn h-auto">
+                            {{#if (isFriend userForRender._id currentUser.follows)}}
+                            <div class="btn-follow" onclick="unfollowUser('{{userForRender._id}}', csrf)">Unfollow</div>
+                            {{else}}
+                            <div class="btn-follow" onclick="followUser('{{userForRender._id}}', csrf)">Follow</div>
+                            {{/if}}
+                            {{#if (isFriend userForRender._id currentUser.follows)}}
+                            <a href="../messenger/{{userForRender._id}}"><div class="btn-message">Message</div></a>
+                            {{/if}}
+                            <input type="hidden" name="_csrf" id="_csrf" value="{{csrf}}">
+                    </div>
+                </div>
+            </div>
+            {{> friends_quantity}}
+            {{> friends_table}}
+        </div>
+    </main>

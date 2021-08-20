@@ -1,0 +1,28 @@
+    <div class="container admin_edit">    
+        <div class="row settings__head mx-auto">
+            <div class="col-6 settings__title">Create new profile</div>
+            <div class="col-6 settings__btn-close" onclick="window.location.replace('../auth/login')"></div>
+        </div>
+        <hr>
+        <form class="row settings__main" name="user" action="" method="post">
+            <div class="row">
+                    <div class="col-9">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_name">Name</label>
+                        <input class="col-12 mb-2" type="text" name="user_name" id="user_name" onclick="this.value=''" value="Enter your name">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_password">Password</label>
+                        <input class="col-12 mb-2" type="text" name="user_password" id="user_password" onclick="this.value=''" value="Enter your password">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_location">Location</label>
+                        <input class="col-12 mb-2" type="text" name="user_location" id="user_location" required onclick="this.value=''" value="Enter your location">
+                        <label class="col-12 setting__edit-parameter-name mb-0" for="user_status">Status</label>
+                        <textarea class="col-12 setting__states__input-text" name="user_status" id="user_status" onclick="this.value=''" cols="30" rows="2">I love Social Inc!!!</textarea>
+                    </div>
+                        <div class="row settings__footer justify-content-end">
+                            <input class="col-6 settings__btn-red" type="button" value="Create" id="" onclick="user_create(document.forms.user)">
+                            <input class="col-6 settings__btn-gray " type="button" onclick="window.location.replace('../auth/login')" value="Cancel">
+                        </div>
+                        <input type="hidden" name="_csrf" value="{{csrf}}">
+                        <input type="hidden" name="_registration" value="1">
+                        <input type="hidden" name="img_avatar" value="/img/avatar_default.jpg">
+            </div>
+        </form>
+    </div>
